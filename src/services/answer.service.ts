@@ -23,12 +23,13 @@ export class AnswerService {
     .toPromise()
   }
 
-  updateAnswer(answerId, values){
+  updateAnswer(values){
     let data = new Answer();
     data.answer = values.answer;
     data.positiveVotes = values.positiveVotes;
     data.negativeVotes = values.negativeVotes;
-    return this.answerApi.updateAttributes<Answer>(answerId, data)
+    data.questionId = values.questionId;
+    return this.answerApi.updateAttributes<Answer>(values.id, data)
     .toPromise()
   }
 

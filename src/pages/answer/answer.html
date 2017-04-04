@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Answers
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="showQuestionPage()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-buttons end>
+      <button ion-button icon-left clear small (click)="addAnswer()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-card-content>
+      {{ question }}
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="answers.length > 0">
+    Answers
+    <ion-card *ngFor="let answer of answers">
+      <ion-buttons end>
+        <button ion-button icon-left clear small (click)="delete(answer.id)">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-card-content>
+        {{ answer.answer }}
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small (click)= "addPositiveVote(answer)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{answer.positiveVotes}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)= "addNegativeVote(answer)">
+            <ion-icon name="thumbs-down"></ion-icon>
+            <div>{{answer.negativeVotes}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div *ngIf="answers.length == 0"> There is not answers </div>
+
+
+</ion-content>

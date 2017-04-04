@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Question
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="addQuestion()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="questions.length > 0">
+    <ion-card *ngFor="let question of questions">
+      <ion-buttons end>
+        <button ion-button icon-left clear small (click)="delete(question.id)">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-card-content>
+        {{ question.question }}
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small (click)= "addPositiveVote(question)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{question.positiveVotes}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)= "addNegativeVote(question)">
+            <ion-icon name="thumbs-down"></ion-icon>
+            <div>{{question.negativeVotes}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small (click)="openAnswers(question)">
+            Details
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div *ngIf="questions.length == 0"> There is not questions </div>
+</ion-content>

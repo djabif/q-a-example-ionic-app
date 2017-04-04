@@ -20,12 +20,12 @@ export class QuestionService {
     .toPromise()
   }
 
-  updateQuestion(questionId, values){
+  updateQuestion(values){
     let data = new Question();
     data.question = values.question;
     data.positiveVotes = values.positiveVotes;
     data.negativeVotes = values.negativeVotes;
-    return this.questionApi.updateAttributes<Question>(questionId, data)
+    return this.questionApi.updateAttributes<Question>(values.id, data)
     .toPromise()
   }
 
@@ -35,4 +35,5 @@ export class QuestionService {
     return this.questionApi.create<Question>(data)
     .toPromise()
   }
+
 }
