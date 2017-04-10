@@ -5,4 +5,4 @@ import { AppModule } from './app.module';
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-LoopBackConfig.setBaseURL('https://q-a-example-loopback-api.herokuapp.com/');
+LoopBackConfig.setBaseURL('https://q-a-example-loopback-api.herokuapp.com');

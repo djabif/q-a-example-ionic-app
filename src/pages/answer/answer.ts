@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
 import { AnswerService } from '../../services/answer.service'
 import { QuestionService } from '../../services/question.service'
+import { QuestionPage } from '../question/question'
+
 
 @Component({
   selector: 'page-answer',
@@ -100,6 +102,10 @@ export class AnswerPage {
     answer.negativeVotes += 1;
     this.answerService.updateAnswer(answer)
     .then(res => this.getAnswers())
+  }
+
+  showQuestionPage(){
+    this.navCtrl.push(QuestionPage);
   }
 
 }

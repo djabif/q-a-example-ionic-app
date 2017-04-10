@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { QuestionService } from '../../services/question.service';
+import { AnswerService } from '../../services/answer.service';
 import { AnswerPage } from '../answer/answer';
 
 @Component({
@@ -15,6 +16,7 @@ export class QuestionPage {
   constructor(
     public navCtrl: NavController,
     public questionService: QuestionService,
+    public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
   ) {}
@@ -82,7 +84,13 @@ export class QuestionPage {
           text: 'Agree',
           handler: () => {
             this.questionService.deleteQuestion(questionId)
-            .then(res => this.getQuestions())
+            .then(res => this.getQuestions());
+            this.answerService.getAnswers(questionId)
+            .then(answers => {
+              for(let answer of answers){
+                this.answerService.deleteAnswer(answer.id);
+              }
+            })
           }
         }
       ]

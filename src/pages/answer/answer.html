@@ -15,7 +15,7 @@
   <ion-card>
     <ion-buttons end>
       <button ion-button icon-left clear small (click)="addAnswer()">
-        <ion-icon name="add-circle"></ion-icon>
+        Add an answer
       </button>
     </ion-buttons>
     <ion-card-content>
@@ -28,7 +28,7 @@
     <ion-card *ngFor="let answer of answers">
       <ion-buttons end>
         <button ion-button icon-left clear small (click)="delete(answer.id)">
-          <ion-icon name="md-close"></ion-icon>
+          Delete
         </button>
       </ion-buttons>
       <ion-card-content>
