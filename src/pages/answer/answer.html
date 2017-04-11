@@ -24,7 +24,7 @@
   </ion-card>
 
   <div *ngIf="answers.length > 0">
-    Answers
+    <label class="answerText" >Answers:</label>
     <ion-card *ngFor="let answer of answers">
       <ion-buttons end>
         <button ion-button icon-left clear small (click)="delete(answer.id)">
@@ -47,11 +47,18 @@
             <div>{{answer.negativeVotes}}</div>
           </button>
         </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)= "edit(answer)">
+            Edit
+          </button>
+        </ion-col>
       </ion-row>
     </ion-card>
   </div>
 
-  <div *ngIf="answers.length == 0"> There is not answers </div>
+  <div *ngIf="answers.length == 0">
+    <label class="emptyCard">There is not answers</label>
+  </div>
 
 
 </ion-content>

@@ -32,8 +32,15 @@ export class AnswerPage {
   }
 
   getAnswers(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
     this.answerService.getAnswers(this.questionId)
-    .then(res => this.answers = res)
+    .then(res => {
+      this.answers = res;
+      loading.dismiss();
+    })
   }
 
   addAnswer(){
@@ -102,6 +109,38 @@ export class AnswerPage {
     answer.negativeVotes += 1;
     this.answerService.updateAnswer(answer)
     .then(res => this.getAnswers())
+  }
+
+  edit(answer){
+    let prompt = this.alertCtrl.create({
+      title: 'Edit Answer',
+      message: "Write the new answer for the question",
+      inputs: [
+        {
+          name: 'answer',
+          placeholder: 'answer'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Change',
+          handler: data => {
+            answer.answer = data.answer;
+            this.answerService.updateAnswer(answer)
+            .then(res => {
+              this.getAnswers();
+            })
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   showQuestionPage(){

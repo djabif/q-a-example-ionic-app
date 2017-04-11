@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { QuestionApi, Question } from '../../sdk';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class QuestionService {
   constructor(
-    private http: Http,
     private questionApi: QuestionApi
   ){}
 

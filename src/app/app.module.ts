@@ -5,6 +5,7 @@ import { QuestionPage } from '../pages/question/question';
 import { AnswerPage } from '../pages/answer/answer';
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +19,7 @@ import { SDKBrowserModule } from '../../sdk/index';
     AnswerPage
   ],
   imports: [
+    BrowserModule,
     IonicModule.forRoot(MyApp),
     SDKBrowserModule.forRoot()
   ],
