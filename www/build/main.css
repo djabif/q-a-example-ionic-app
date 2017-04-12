@@ -24313,13 +24313,13 @@ ion-navbar.toolbar {
   }
 }
 
-page-answer .answerText {
+question-details-page .answerText {
   color: #387ef5;
   font-size: 18px;
   margin-left: 10px;
 }
 
-page-answer .emptyCard {
+question-details-page .emptyCard {
   color: #387ef5;
   margin-left: 10px;
 }

@@ -1,23 +1,68 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, MenuController, Nav, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { QuestionPage } from '../pages/question/question';
-
+import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
 
 @Component({
+  selector: 'app-root',
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = QuestionPage;
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  // make LearnFeedPage the root (or first) page
+  rootPage: any = LearnFeedPage;
+
+  pages: Array<{title: string, icon: string, component: any, params: any}>;
+
+  constructor(
+    platform: Platform,
+    statusBar: StatusBar,
+    splashScreen: SplashScreen,
+    public menu: MenuController,
+    public app: App
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    this.pages = [
+      {
+        title: 'All',
+        icon: 'home',
+        component: LearnFeedPage,
+        params: {
+          query: 'all'
+        }
+      },
+      {
+        title: 'Basic',
+        icon: 'home',
+        component: LearnFeedPage,
+        params: {
+          query: 'basic'
+        }
+      },
+      {
+        title: 'Core',
+        icon: 'home',
+        component: LearnFeedPage,
+        params: {
+          query: 'core'
+        }
+      }
+    ];
+  }
+
+  openPage(page) {
+    // close the menu when clicking a link from the menu
+    this.menu.close();
+    // navigate to the new page if it is not the current page
+    this.nav.setRoot(page.component, page.params);
   }
 }
