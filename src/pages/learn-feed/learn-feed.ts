@@ -13,7 +13,10 @@ import { LearnDetailsPage } from '../learn-details/learn-details';
 export class LearnFeedPage {
   _query : string = 'all';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
     let query_param = navParams.get('query');
     this._query = isPresent(query_param) ? query_param : 'all';
   }
@@ -22,8 +25,8 @@ export class LearnFeedPage {
     console.log('ionViewDidLoad LearnFeedPage');
   }
 
-  openDetails() {
-    this.navCtrl.push(LearnDetailsPage);
+  openDetails(params) {
+    this.navCtrl.push(LearnDetailsPage, params);
   }
 
 }

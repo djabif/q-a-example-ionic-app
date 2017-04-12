@@ -101,6 +101,18 @@ export class QuestionDetailsPage {
     confirm.present();
   }
 
+  upVoteQuestion(){
+    // question.positiveVotes += 1;
+    // this.questionService.updateQuestion(question)
+    // .then(res => this.getQuestions())
+  }
+
+  downVoteQuestion(){
+    // question.negativeVotes += 1;
+    // this.questionService.updateQuestion(question)
+    // .then(res => this.getQuestions())
+  }
+
   addPositiveVote(answer){
     answer.positiveVotes += 1;
     this.answerService.updateAnswer(answer)

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { isPresent } from 'ionic-angular/util/util';
 
 import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
@@ -14,14 +15,19 @@ import { QuestionDetailsPage } from '../question-details/question-details';
 export class LearnDetailsPage {
 
   questions: Array<any> = [];
+  _detail_slug : string;
 
   constructor(
     public navCtrl: NavController,
+    public navParams: NavParams,
     public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
-  ) {}
+  ) {
+    let detail_slug_param = navParams.get('slug');
+    this._detail_slug = isPresent(detail_slug_param) ? detail_slug_param : '';
+  }
 
   ionViewWillEnter() {
    this.getQuestions();
@@ -100,17 +106,17 @@ export class LearnDetailsPage {
     confirm.present();
   }
 
-  addPositiveVote(question){
-    question.positiveVotes += 1;
-    this.questionService.updateQuestion(question)
-    .then(res => this.getQuestions())
-  }
-
-  addNegativeVote(question){
-    question.negativeVotes += 1;
-    this.questionService.updateQuestion(question)
-    .then(res => this.getQuestions())
-  }
+  // addPositiveVote(question){
+  //   question.positiveVotes += 1;
+  //   this.questionService.updateQuestion(question)
+  //   .then(res => this.getQuestions())
+  // }
+  //
+  // addNegativeVote(question){
+  //   question.negativeVotes += 1;
+  //   this.questionService.updateQuestion(question)
+  //   .then(res => this.getQuestions())
+  // }
 
   openAnswers(question){
     this.navCtrl.push(QuestionDetailsPage, {

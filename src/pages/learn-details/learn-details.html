@@ -4,13 +4,13 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <span>Questions</span>
+      <span>Learn Ionic!</span>
     </ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="addQuestion()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
   <!-- <ion-toolbar color="primary">
     <ion-title>
@@ -25,8 +25,45 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>Learn all about {{ _detail_slug }}!</h1>
+  <p>
+    Breve descripcion
+  </p>
+  <h3>Find all the Questions and Answers about {{ _detail_slug }} from the community</h3>
+
+  <div *ngIf="questions.length == 0"> There are no questions at the time</div>
+
   <div *ngIf="questions.length > 0">
     <ion-card *ngFor="let question of questions">
+      <ion-row>
+        <ion-col col-4>
+          <ion-row>
+            <ion-col col-4>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>{{question.positiveVotes}}</div>
+              </button>
+            </ion-col>
+            <ion-col col-4>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-down"></ion-icon>
+                <div>{{question.negativeVotes}}</div>
+              </button>
+            </ion-col>
+            <ion-col col-12>
+              <span (click)="openAnswers(question)">ANSWERS</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-8>
+          <h2 (click)="openAnswers(question)">{{ question.question }}</h2>
+          <h3>Don't Know What To Do!</h3>
+          <p>I've had a pretty messed up day. If we just...</p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <!-- <ion-card *ngFor="let question of questions">
       <ion-buttons end>
         <button ion-button icon-left clear small (click)="delete(question.id)">
           <ion-icon name="md-close"></ion-icon>
@@ -54,8 +91,12 @@
           </button>
         </ion-col>
       </ion-row>
-    </ion-card>
+    </ion-card> -->
   </div>
-
-  <div *ngIf="questions.length == 0"> There is not questions </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block (click)="addQuestion()">Have a Question? Ask!</button>
+  </ion-toolbar>
+</ion-footer>

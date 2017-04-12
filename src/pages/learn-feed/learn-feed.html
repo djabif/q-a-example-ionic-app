@@ -10,9 +10,11 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>LEARN!! {{ _query }}</h2>
+  <h2>Showing: {{ _query }} concepts</h2>
 
-  <ion-card (click)="openDetails()">
+  <!-- Tenemos que poner los conceptos de Ionic con un  ngFor-->
+  <!-- El click tiene que pasarle el 'slug' (ej: 'ionic-page') del concepto de Ionic como param => openDetails(concept.slug) -->
+  <ion-card (click)="openDetails({ slug: 'ionic-page'})">
     <ion-card-header>
       @IonicPage
     </ion-card-header>
