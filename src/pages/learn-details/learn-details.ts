@@ -5,7 +5,6 @@ import { isPresent } from 'ionic-angular/util/util';
 import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
 
-// import { AnswerPage } from '../answer/answer';
 import { QuestionDetailsPage } from '../question-details/question-details';
 
 @Component({
@@ -105,18 +104,6 @@ export class LearnDetailsPage {
     });
     confirm.present();
   }
-
-  // addPositiveVote(question){
-  //   question.positiveVotes += 1;
-  //   this.questionService.updateQuestion(question)
-  //   .then(res => this.getQuestions())
-  // }
-  //
-  // addNegativeVote(question){
-  //   question.negativeVotes += 1;
-  //   this.questionService.updateQuestion(question)
-  //   .then(res => this.getQuestions())
-  // }
 
   openAnswers(question){
     this.navCtrl.push(QuestionDetailsPage, {

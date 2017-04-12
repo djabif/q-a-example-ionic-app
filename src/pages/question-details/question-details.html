@@ -7,16 +7,6 @@
       <span>Question details</span>
     </ion-title>
   </ion-navbar>
-  <!-- <ion-toolbar color="primary">
-    <ion-title>
-      Answers
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="showQuestionPage()">
-        <ion-icon name="md-arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-toolbar> -->
 </ion-header>
 
 <ion-content padding>
@@ -67,37 +57,14 @@
         </ion-col>
         <ion-col col-10>
           <p>{{ answer.answer }}</p>
+          <ion-row>
+            <ion-col col-12>
+              <button ion-button small color="danger" (click)="delete(answer.id)">Delete</button>
+              <button ion-button small color="dark" (click)="edit(answer)">Edit</button>
+            </ion-col>
+          </ion-row>
         </ion-col>
       </ion-row>
-
-
-      <!-- <ion-buttons end>
-        <button ion-button icon-left clear small (click)="delete(answer.id)">
-          Delete
-        </button>
-      </ion-buttons>
-      <ion-card-content>
-        {{ answer.answer }}
-      </ion-card-content>
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small (click)= "addPositiveVote(answer)">
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>{{answer.positiveVotes}}</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small (click)= "addNegativeVote(answer)">
-            <ion-icon name="thumbs-down"></ion-icon>
-            <div>{{answer.negativeVotes}}</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small (click)= "edit(answer)">
-            Edit
-          </button>
-        </ion-col>
-      </ion-row> -->
     </ion-card>
   </div>
 </ion-content>

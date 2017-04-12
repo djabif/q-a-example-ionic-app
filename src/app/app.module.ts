@@ -1,9 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 import { MyApp } from './app.component';
 
-// import { QuestionPage } from '../pages/question/question';
-// import { AnswerPage } from '../pages/answer/answer';
 import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
@@ -20,8 +19,7 @@ import { SDKBrowserModule } from '../../sdk/index';
 @NgModule({
   declarations: [
     MyApp,
-    // QuestionPage,
-    // AnswerPage,
+
     LearnFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage
@@ -34,8 +32,7 @@ import { SDKBrowserModule } from '../../sdk/index';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    // QuestionPage,
-    // AnswerPage,
+
     LearnFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage
