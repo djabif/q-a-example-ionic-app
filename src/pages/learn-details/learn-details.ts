@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 
 import { QuestionService } from '../../services/question.service';
 import { AnswerService } from '../../services/answer.service';
 
 import { QuestionDetailsPage } from '../question-details/question-details';
+import { ManageQuestionPage } from '../manage-question/manage-question';
 
 @Component({
   selector: 'learn-details-page',
@@ -22,10 +23,19 @@ export class LearnDetailsPage {
     public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController
   ) {
     let detail_slug_param = navParams.get('slug');
     this._detail_slug = isPresent(detail_slug_param) ? detail_slug_param : '';
+  }
+
+  createQuestionModal() {
+    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { userId: 8675309 });
+    create_question_modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    create_question_modal.present();
   }
 
   ionViewWillEnter() {

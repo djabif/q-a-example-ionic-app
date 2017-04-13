@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { LearnFeedPage } from '../pages/learn-feed/learn-feed';
 import { LearnDetailsPage } from '../pages/learn-details/learn-details';
 import { QuestionDetailsPage } from '../pages/question-details/question-details';
+import { ManageQuestionPage } from '../pages/manage-question/manage-question';
+import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
@@ -22,7 +24,9 @@ import { SDKBrowserModule } from '../../sdk/index';
 
     LearnFeedPage,
     LearnDetailsPage,
-    QuestionDetailsPage
+    QuestionDetailsPage,
+    ManageQuestionPage,
+    ManageAnswerPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { SDKBrowserModule } from '../../sdk/index';
 
     LearnFeedPage,
     LearnDetailsPage,
-    QuestionDetailsPage
+    QuestionDetailsPage,
+    ManageQuestionPage,
+    ManageAnswerPage
   ],
   providers: [
     StatusBar,

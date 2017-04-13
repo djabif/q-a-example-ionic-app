@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, NavParams, ModalController } from 'ionic-angular';
 
 import { AnswerService } from '../../services/answer.service'
 import { QuestionService } from '../../services/question.service'
 
 // import { QuestionPage } from '../question/question'
-import { LearnDetailsPage } from '../learn-details/learn-details'
-
+// import { LearnDetailsPage } from '../learn-details/learn-details'
+import { ManageAnswerPage } from '../manage-answer/manage-answer';
 
 @Component({
   selector: 'question-details-page',
@@ -24,8 +24,33 @@ export class QuestionDetailsPage {
     public questionService: QuestionService,
     public answerService: AnswerService,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController
   ) {}
+
+  createAnswerModal() {
+    let create_answer_data = {
+      mode: 'create',
+      questionId: 'Question_8675309'
+    };
+    let create_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: create_answer_data });
+    create_answer_modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    create_answer_modal.present();
+  }
+
+  editAnswerModal() {
+    let edit_answer_data = {
+      mode: 'edit',
+      answerId: 'Answer_8675309'
+    };
+    let edit_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: edit_answer_data });
+    edit_answer_modal.onDidDismiss(data => {
+      console.log(data);
+    });
+    edit_answer_modal.present();
+  }
 
   ionViewWillEnter() {
    this.question = this.navParams.get('text');
@@ -157,8 +182,8 @@ export class QuestionDetailsPage {
     prompt.present();
   }
 
-  showQuestionPage(){
-    this.navCtrl.push(LearnDetailsPage);
-  }
+  // showQuestionPage(){
+  //   this.navCtrl.push(LearnDetailsPage);
+  // }
 
 }
