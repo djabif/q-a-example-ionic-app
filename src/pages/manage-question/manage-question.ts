@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
-import { isPresent } from 'ionic-angular/util/util';
+// import { isPresent } from 'ionic-angular/util/util';
 
 @Component({
   selector: 'manage-question-page',
