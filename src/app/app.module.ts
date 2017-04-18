@@ -11,6 +11,7 @@ import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
+// import { LearnService } from '../services/learn.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 
