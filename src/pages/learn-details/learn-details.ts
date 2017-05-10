@@ -54,38 +54,6 @@ export class LearnDetailsPage {
     })
   }
 
-  addQuestion(){
-    let prompt = this.alertCtrl.create({
-      title: 'Add Question',
-      message: "Write the question you want to ask",
-      inputs: [
-        {
-          name: 'question',
-          placeholder: 'question'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.questionService.createQuestion(data)
-            .then(res => {
-              console.log(res);
-              this.getQuestions();
-            })
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
-
   delete(questionId){
     let confirm = this.alertCtrl.create({
       title: 'Delete question',

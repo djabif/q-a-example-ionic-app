@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "slug": "IONIC-2",
+      "title": "Ionic 2",
+      "description": "Ask about Ionic 2",
+      "tags": [
+        {
+          "name": "Ionic2"
+        },
+        {
+          "name": "Angular2"
+        },
+        {
+          "name": "Typescript"
+        }
+      ]
+    },
+    {
+      "slug": "ANGULAR-2",
+      "title": "Angular 2",
+      "description": "Ask about Angular 2",
+      "tags":[
+        {
+          "name": "Typescript"
+        },
+        {
+          "name": "Angular2"
+        }
+      ]
+    },
+    {
+      "slug": "IONIC-NATIVE",
+      "title": "Ionic Native",
+      "description": "Ask about Ionic Native",
+      "tags": [
+        {
+            "name": "Ionic2"
+        },
+        {
+            "name": "Plugins"
+        }
+      ]
+    }
+  ]
+}

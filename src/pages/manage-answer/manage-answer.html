@@ -13,8 +13,17 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{ _mode }} answer!</h1>
-  {{ _mode }}
-  {{ _question_id }}
-  {{ _answer_id }}
+  <form [formGroup]="answerForm" class="form" (ngSubmit)="onSubmit(answerForm.value)" >
+  <ion-row>
+    <ion-col offset-1 col-10>
+      <ion-item>
+        <ion-label floating>Write your answer here</ion-label>
+        <ion-input type="text" formControlName="answer" class="form-controll"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col  offset-3 col-6>
+      <button ion-button full type="submit" [disabled]="!answerForm.valid">ANSWER</button>
+    </ion-col>
+  </ion-row>
+</form>
 </ion-content>

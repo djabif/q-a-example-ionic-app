@@ -14,31 +14,15 @@
 
   <!-- Tenemos que poner los conceptos de Ionic con un  ngFor-->
   <!-- El click tiene que pasarle el 'slug' (ej: 'ionic-page') del concepto de Ionic como param => openDetails(concept.slug) -->
-  <ion-card (click)="openDetails({ slug: 'ionic-page'})">
+  <ion-card *ngFor="let item of categories" (click)="openDetails({ slug: 'ionic-page'})">
     <ion-card-header>
-      @IonicPage
+      {{item.title}}
     </ion-card-header>
     <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      {{item.description}}
       <ion-row>
         <ion-col>
-          <ion-badge item-right>Ionic 2</ion-badge>
-          <ion-badge item-right>NgModule</ion-badge>
-          <ion-badge item-right>@Component</ion-badge>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card (click)="openDetails({ slug: 'ng-module'})">
-    <ion-card-header>
-      NgModule
-    </ion-card-header>
-    <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-      <ion-row>
-        <ion-col>
-          <ion-badge item-right>Ionic 2</ion-badge>
+          <ion-badge *ngFor="let tag of item.tags" item-right>{{tag.name}}</ion-badge>
         </ion-col>
       </ion-row>
     </ion-card-content>

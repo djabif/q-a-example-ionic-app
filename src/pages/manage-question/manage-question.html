@@ -13,5 +13,17 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Create question!</h1>
+  <form [formGroup]="questionForm" class="form" (ngSubmit)="onSubmit(questionForm.value)" >
+  <ion-row>
+    <ion-col offset-1 col-10>
+      <ion-item>
+        <ion-label floating>Write your question here</ion-label>
+        <ion-input type="text" formControlName="question" class="form-controll"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col  offset-3 col-6>
+      <button ion-button full type="submit" [disabled]="!questionForm.valid">ASK</button>
+    </ion-col>
+  </ion-row>
+</form>
 </ion-content>
