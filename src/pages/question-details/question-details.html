@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{ question }}</h1>
+  <h1>{{ question.question }}</h1>
   <p>
     This question was usefull?
   </p>
@@ -18,15 +18,13 @@
     <ion-col col-6>
       <button ion-button icon-left clear small (click)= "upVoteQuestion()">
         <ion-icon name="thumbs-up"></ion-icon>
-        <!-- <div>{{question.positiveVotes}}</div> -->
-        <div>5</div>
+        <div>{{question.positiveVotes}}</div>
       </button>
     </ion-col>
     <ion-col col-6>
       <button ion-button icon-left clear small (click)= "downVoteQuestion()">
         <ion-icon name="thumbs-down"></ion-icon>
-        <!-- <div>{{question.negativeVotes}}</div> -->
-        <div>1</div>
+        <div>{{question.negativeVotes}}</div>
       </button>
     </ion-col>
   </ion-row>
@@ -36,7 +34,7 @@
   </div>
 
   <div *ngIf="answers.length > 0">
-    <h3>We found 48 Answers for this question!</h3>
+    <h3>We found {{answers.length}} Answers for this question!</h3>
     <ion-card *ngFor="let answer of answers">
       <ion-row>
         <ion-col col-2>
@@ -61,7 +59,7 @@
             <ion-col col-12>
               <button ion-button small color="danger" (click)="delete(answer.id)">Delete</button>
               <!-- <button ion-button small color="dark" (click)="edit(answer)">Edit</button> -->
-              <button ion-button small color="dark" (click)="editAnswerModal()">Edit</button>
+              <button ion-button small color="dark" (click)="editAnswerModal(answer.id)">Edit</button>
             </ion-col>
           </ion-row>
         </ion-col>

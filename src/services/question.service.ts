@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QuestionApi, Question } from '../../sdk';
+import { QuestionApi, Question, LoopBackFilter } from '../../sdk';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -9,8 +9,30 @@ export class QuestionService {
   ){}
 
   getQuestions(){
-   return this.questionApi.find<Question>()
+   let filter: LoopBackFilter = {
+     "include":{
+       "relation": "answers"
+     }
+
+   }
+   return this.questionApi.find<Question>(filter)
    .toPromise()
+  }
+
+  getQuestion(questionId){
+    let query = {
+      id: questionId
+    }
+    return this.questionApi.find<Question>({where: query})
+    .toPromise()
+  }
+
+  getQuestionsBySlug(slug){
+    let query = {
+      questionSlug: slug
+    }
+    return this.questionApi.find<Question>({where: query})
+    .toPromise()
   }
 
   deleteQuestion(questionId){
@@ -23,6 +45,7 @@ export class QuestionService {
     data.question = values.question;
     data.positiveVotes = values.positiveVotes;
     data.negativeVotes = values.negativeVotes;
+    data.questionSlug = values.questionSlug;
     return this.questionApi.updateAttributes<Question>(values.id, data)
     .toPromise()
   }
@@ -30,6 +53,7 @@ export class QuestionService {
   createQuestion(values){
     let data = new Question();
     data.question = values.question;
+    data.questionSlug = values.questionSlug
     return this.questionApi.create<Question>(data)
     .toPromise()
   }

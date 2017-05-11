@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
-// import { isPresent } from 'ionic-angular/util/util';
+import { isPresent } from 'ionic-angular/util/util';
 import { QuestionService } from '../../services/question.service';
 
 @Component({
@@ -11,7 +11,8 @@ import { QuestionService } from '../../services/question.service';
 export class ManageQuestionPage {
 
   // questions: Array<any> = [];
-  // _detail_slug : string;
+  _detail_slug : string;
+  questionSlug: string;
   questionForm: FormGroup;
 
   constructor(
@@ -19,8 +20,8 @@ export class ManageQuestionPage {
     public viewCtrl: ViewController,
     public questionService: QuestionService
   ) {
-    // let detail_slug_param = navParams.get('slug');
-    // this._detail_slug = isPresent(detail_slug_param) ? detail_slug_param : '';
+    this.questionSlug = navParams.get('slug');
+    this._detail_slug = isPresent(this.questionSlug) ? this.questionSlug : '';
   }
 
   ionViewWillLoad() {
@@ -35,7 +36,10 @@ export class ManageQuestionPage {
   }
 
   onSubmit(value){
-    this.questionService.createQuestion(value.question)
+    console.log(this._detail_slug)
+    let data = value;
+    data.questionSlug = this.questionSlug;
+    this.questionService.createQuestion(value)
     .then( res => this.dismiss() )
   }
 

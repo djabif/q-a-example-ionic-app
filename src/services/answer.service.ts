@@ -16,6 +16,14 @@ export class AnswerService {
    .toPromise()
   }
 
+  getAnswer(anserId){
+    let query = {
+      id: anserId
+    }
+    return this.answerApi.find<Answer>({where: query})
+    .toPromise()
+  }
+
   deleteAnswer(answerId){
     return this.answerApi.deleteById<Answer>(answerId)
     .toPromise()
@@ -36,6 +44,14 @@ export class AnswerService {
     data.answer = values.answer;
     data.questionId = values.questionId;
     return this.answerApi.create<Answer>(data)
+    .toPromise()
+  }
+
+  countAnswers(questionId){
+    let query = { 
+      questionId: questionId
+    }
+    return this.answerApi.count({where: query})
     .toPromise()
   }
 }

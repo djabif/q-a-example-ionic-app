@@ -15,6 +15,7 @@ export class ManageAnswerPage {
   _question_id: string;
   _answer_id: string;
   answerForm: FormGroup;
+  answer: any;
 
   constructor(
     public navParams: NavParams,
@@ -28,6 +29,11 @@ export class ManageAnswerPage {
   }
 
   ionViewWillLoad() {
+    let data = this.navParams.get('data');
+    if(data.answerId){
+      this.answerService.getAnswer(data.answerId)
+      .then(res => this.answer = res[0])
+    }
     this.answerForm = new FormGroup({
       answer: new FormControl('', Validators.required)
     })
@@ -39,8 +45,20 @@ export class ManageAnswerPage {
   }
 
   onSubmit(value){
-    this.answerService.createAnswer(value.answer)
-    .then( res => this.dismiss() )
+    let data = value;
+    data.questionId = this._question_id;
+    console.log(data)
+    if(this.answer){
+      data.id = this.answer.id;
+      data.positiveVotes = this.answer.positiveVotes;
+      data.negativeVotes = this.answer.negativeVotes;
+      this.answerService.updateAnswer(data)
+      .then( res => this.dismiss())
+    }
+    else{
+      this.answerService.createAnswer(value)
+      .then( res => this.dismiss())
+    }
   }
 
 }

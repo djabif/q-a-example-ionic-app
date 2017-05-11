@@ -31,7 +31,7 @@ export class LearnDetailsPage {
   }
 
   createQuestionModal() {
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { userId: 8675309 });
+    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this._detail_slug });
     create_question_modal.onDidDismiss(data => {
       console.log(data);
     });
@@ -47,9 +47,10 @@ export class LearnDetailsPage {
       content: 'Please wait...'
     });
     loading.present();
-    this.questionService.getQuestions()
+    this.questionService.getQuestionsBySlug(this._detail_slug)
     .then(res => {
       this.questions = res;
+      console.log(res)
       loading.dismiss();
     })
   }
@@ -83,10 +84,30 @@ export class LearnDetailsPage {
     confirm.present();
   }
 
+  addPositiveVote(question){
+    let data = question;
+    data.positiveVotes += 1;
+    data.questionSlug = this._detail_slug;
+    this.questionService.updateQuestion(data)
+    .then(res => this.getQuestions())
+  }
+
+  addNegativeVote(question){
+    let data = question;
+    data.negativeVotes += 1;
+    data.questionSlug = this._detail_slug;
+    this.questionService.updateQuestion(data)
+    .then(res => this.getQuestions())
+  }
+
+  countAnswers(questionId){
+    return this.answerService.countAnswers(questionId)
+    .then(res => console.log(res))
+  }
+
   openAnswers(question){
     this.navCtrl.push(QuestionDetailsPage, {
-      id: question.id,
-      text: question.question
+      id: question.id
     });
   }
 

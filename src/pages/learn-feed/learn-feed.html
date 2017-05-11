@@ -14,9 +14,9 @@
 
   <!-- Tenemos que poner los conceptos de Ionic con un  ngFor-->
   <!-- El click tiene que pasarle el 'slug' (ej: 'ionic-page') del concepto de Ionic como param => openDetails(concept.slug) -->
-  <ion-card *ngFor="let item of categories" (click)="openDetails({ slug: 'ionic-page'})">
+  <ion-card *ngFor="let item of categories" (click)="openDetails({ slug: item.slug})">
     <ion-card-header>
-      {{item.title}}
+      {{item.title}} {{item.category}}
     </ion-card-header>
     <ion-card-content>
       {{item.description}}

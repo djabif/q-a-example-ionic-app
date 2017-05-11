@@ -24,19 +24,19 @@
         <ion-col col-4>
           <ion-row>
             <ion-col col-4>
-              <button ion-button icon-left clear small>
+              <button ion-button icon-left clear small (click)= "addPositiveVote(question)">
                 <ion-icon name="thumbs-up"></ion-icon>
                 <div>{{question.positiveVotes}}</div>
               </button>
             </ion-col>
             <ion-col col-4>
-              <button ion-button icon-left clear small>
+              <button ion-button icon-left clear small (click)= "addNegativeVote(question)">
                 <ion-icon name="thumbs-down"></ion-icon>
                 <div>{{question.negativeVotes}}</div>
               </button>
             </ion-col>
             <ion-col col-12>
-              <span (click)="openAnswers(question)">5 ANSWERS</span>
+              <span (click)="openAnswers(question)"></span>
             </ion-col>
             <ion-col col-12>
               <button ion-button block small color="danger" (click)="delete(question.id)">Delete</button>
