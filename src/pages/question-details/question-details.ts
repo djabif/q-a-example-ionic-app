@@ -35,7 +35,7 @@ export class QuestionDetailsPage {
     };
     let create_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: create_answer_data });
     create_answer_modal.onDidDismiss(data => {
-      console.log(data);
+       this.getAnswers();
     });
     create_answer_modal.present();
   }

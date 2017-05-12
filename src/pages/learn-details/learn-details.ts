@@ -33,7 +33,7 @@ export class LearnDetailsPage {
   createQuestionModal() {
     let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this._detail_slug });
     create_question_modal.onDidDismiss(data => {
-      console.log(data);
+      this.getQuestions();
     });
     create_question_modal.present();
   }
@@ -50,7 +50,6 @@ export class LearnDetailsPage {
     this.questionService.getQuestionsBySlug(this._detail_slug)
     .then(res => {
       this.questions = res;
-      console.log(res)
       loading.dismiss();
     })
   }
