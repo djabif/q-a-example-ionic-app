@@ -47,7 +47,6 @@ export class ManageAnswerPage {
   onSubmit(value){
     let data = value;
     data.questionId = this._question_id;
-    console.log(data)
     if(this.answer){
       data.id = this.answer.id;
       data.positiveVotes = this.answer.positiveVotes;
