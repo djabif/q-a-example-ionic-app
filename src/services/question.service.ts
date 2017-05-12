@@ -13,7 +13,6 @@ export class QuestionService {
      "include":{
        "relation": "answers"
      }
-
    }
    return this.questionApi.find<Question>(filter)
    .toPromise()
@@ -28,10 +27,15 @@ export class QuestionService {
   }
 
   getQuestionsBySlug(slug){
-    let query = {
-      questionSlug: slug
+    let filter: LoopBackFilter = {
+      "include":{
+        "relation": "answers"
+      },
+      "where": {
+        "questionSlug": slug
+      }
     }
-    return this.questionApi.find<Question>({where: query})
+    return this.questionApi.find<Question>(filter)
     .toPromise()
   }
 

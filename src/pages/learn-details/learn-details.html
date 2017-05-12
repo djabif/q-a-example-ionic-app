@@ -36,7 +36,7 @@
               </button>
             </ion-col>
             <ion-col col-12>
-              <span (click)="openAnswers(question)"></span>
+              <span (click)="openAnswers(question)">{{question.answers.length}} Answers</span>
             </ion-col>
             <ion-col col-12>
               <button ion-button block small color="danger" (click)="delete(question.id)">Delete</button>
