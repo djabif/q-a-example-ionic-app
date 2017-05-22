@@ -26,7 +26,7 @@ export class LearnFeedPage {
   }
 
   ionViewWillEnter() {
-    this.http.get("../../../../assets/categories/categories.json")
+    this.http.get("../../assets/categories/categories.json")
       .map((res:any) => res.json())
       .subscribe(data => this.categories = data.categories);
   }
