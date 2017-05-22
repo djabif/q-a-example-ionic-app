@@ -15,7 +15,7 @@ export class MyApp {
   // make LearnFeedPage the root (or first) page
   rootPage: any = LearnFeedPage;
 
-  pages: Array<{title: string, icon: string, component: any, params: any}>;
+  pages: Array<{title: string, component: any, params: any}>;
 
   constructor(
     platform: Platform,
@@ -34,7 +34,6 @@ export class MyApp {
     this.pages = [
       {
         title: 'All',
-        icon: 'home',
         component: LearnFeedPage,
         params: {
           query: 'all'
@@ -42,7 +41,6 @@ export class MyApp {
       },
       {
         title: 'Basic',
-        icon: 'home',
         component: LearnFeedPage,
         params: {
           query: 'basic'
@@ -50,7 +48,6 @@ export class MyApp {
       },
       {
         title: 'Core',
-        icon: 'home',
         component: LearnFeedPage,
         params: {
           query: 'core'
