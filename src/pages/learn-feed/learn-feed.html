@@ -9,23 +9,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Showing: {{ _query }} concepts</h2>
+<ion-content>
+  <h2 class="search-query">
+    <span>Showing: </span>
+    <ion-badge class="query-tag">{{ _query }}</ion-badge>
+    <span class="query-explanation"> concepts</span>
+  </h2>
 
-  <!-- Tenemos que poner los conceptos de Ionic con un  ngFor-->
-  <!-- El click tiene que pasarle el 'slug' (ej: 'ionic-page') del concepto de Ionic como param => openDetails(concept.slug) -->
-  <ion-card *ngFor="let item of categories" (click)="openDetails({ slug: item.slug})">
+  <ion-card class="category-concept-card" [style.background-color]="category.background" *ngFor="let category of categories" (click)="openDetails({ slug: category.slug })">
     <ion-card-header>
-      {{item.title}} {{item.category}}
+      <h2 class="category-title">{{ category.title }}</h2>
     </ion-card-header>
     <ion-card-content>
-      {{item.description}}
+      <p class="category-description">
+        {{ category.description }}
+      </p>
       <ion-row>
-        <ion-col>
-          <ion-badge *ngFor="let tag of item.tags" item-right>{{tag.name}}</ion-badge>
+        <ion-col no-padding>
+          <ion-badge class="category-tag" *ngFor="let tag of category.tags" item-right>{{ tag.name }}</ion-badge>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
-
 </ion-content>
