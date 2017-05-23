@@ -15,7 +15,7 @@ import { ManageQuestionPage } from '../manage-question/manage-question';
 export class LearnDetailsPage {
 
   questions: Array<any> = [];
-  _detail_slug : string;
+  category : any;
 
   constructor(
     public navCtrl: NavController,
@@ -26,12 +26,12 @@ export class LearnDetailsPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController
   ) {
-    let detail_slug_param = navParams.get('slug');
-    this._detail_slug = isPresent(detail_slug_param) ? detail_slug_param : '';
+    let category_param = navParams.get('category');
+    this.category = isPresent(category_param) ? category_param : null;
   }
 
   createQuestionModal() {
-    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this._detail_slug });
+    let create_question_modal = this.modalCtrl.create(ManageQuestionPage, { slug: this.category.slug });
     create_question_modal.onDidDismiss(data => {
       this.getQuestions();
     });
@@ -47,7 +47,7 @@ export class LearnDetailsPage {
       content: 'Please wait...'
     });
     loading.present();
-    this.questionService.getQuestionsBySlug(this._detail_slug)
+    this.questionService.getQuestionsBySlug(this.category.slug)
     .then(res => {
       this.questions = res;
       loading.dismiss();
@@ -86,7 +86,7 @@ export class LearnDetailsPage {
   addPositiveVote(question){
     let data = question;
     data.positiveVotes += 1;
-    data.questionSlug = this._detail_slug;
+    data.questionSlug = this.category.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }
@@ -94,7 +94,7 @@ export class LearnDetailsPage {
   addNegativeVote(question){
     let data = question;
     data.negativeVotes += 1;
-    data.questionSlug = this._detail_slug;
+    data.questionSlug = this.category.slug;
     this.questionService.updateQuestion(data)
     .then(res => this.getQuestions())
   }

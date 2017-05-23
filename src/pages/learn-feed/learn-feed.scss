@@ -9,8 +9,8 @@ learn-feed-page {
 
 		.query-tag
 		{
-			border: 1px solid #0077ff;
-			color: #0077ff;
+			border: 1px solid $theme-color-2;
+			color: $theme-color-2;
 			background: #FFF;
 		}
 
@@ -22,7 +22,7 @@ learn-feed-page {
 
 	.category-concept-card
 	{
-		background-color: #F84C61;
+		background-color: $theme-color-3;
 		border-radius: 15px;
 		box-shadow: none;
 		margin-bottom: 20px;

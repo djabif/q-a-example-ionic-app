@@ -23,23 +23,35 @@ $font-path: "../assets/fonts";
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
-$theme-color-1: #1a1a1a;
-$theme-color-2: #ae75e7;
-$theme-color-3: #333333;
+$white: #FFFFFF;
+$white-a: darken($white, 3%);
+$white-b: darken($white, 6%);
+$white-c: darken($white, 12%);
+$white-d: darken($white, 24%);
+
+$black: rgba(#000000, .8);
+$black-a: lighten($black, 10%);
+$black-b: lighten($black, 20%);
+$black-c: lighten($black, 40%);
+$black-d: lighten($black, 60%);
+
+$theme-color-1: $black-a;
+$theme-color-2: #00e9d5;
+$theme-color-3: $black-b;
 
 $colors: (
   primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
+  secondary:  #26bf7e,
+  danger:     #ed4f50,
   light:      #f4f4f4,
   dark:       #222,
   header:(
-    base: $theme-color-1,
-    contrast: #f0f0f0
+    base: $black-a,
+    contrast: $white-b
   ),
   background:(
-    base: #f0f0f0,
-    contrast: $theme-color-1
+    base: $white-b,
+    contrast: $black-a
   )
 );
 
