@@ -30,7 +30,7 @@
   <div *ngIf="questions.length > 0">
     <h3 class="questions-call-out">
       <span>Find all the Questions and Answers about </span>
-      <ion-badge class="query-tag">{{ category.title }}</ion-badge>
+      <ion-badge class="call-out-tag">{{ category.title }}</ion-badge>
       <span class="call-out-explanation"> from the community</span>
     </h3>
 
@@ -64,16 +64,15 @@
                 </div>
               </ion-col>
               <ion-col col-4 class="actions-details">
-                <button class="delete-button" ion-button block small clear color="danger" (click)="delete(question.id)">Delete</button>
+                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(question.id)">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
               </ion-col>
             </ion-row>
           </ion-col>
         </ion-row>
       </ion-item>
     </ion-list>
-    <!-- <ion-card class="question-card" *ngFor="let question of questions">
-
-    </ion-card> -->
   </div>
 </ion-content>
 

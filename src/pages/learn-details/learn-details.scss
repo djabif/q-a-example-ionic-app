@@ -33,7 +33,7 @@ learn-details-page {
 		text-align: center;
 		line-height: 1.8;
 
-		.query-tag
+		.call-out-tag
 		{
 			border: 1px solid $theme-color-2;
 			color: $theme-color-2;
@@ -113,7 +113,6 @@ learn-details-page {
 
 				&.good-score
 				{
-					color: $theme-color-3;
 					color: color($colors, secondary);
 				}
 
@@ -134,6 +133,7 @@ learn-details-page {
 		{
 			height: 100%;
 			align-content: space-between;
+			justify-content: space-between;
 
 			.question-text
 			{
@@ -146,11 +146,13 @@ learn-details-page {
 
 			.actions-details
 			{
-				align-self: center;
+				align-self: flex-end;
+  			text-align: right;
 
 				.delete-button
 				{
 					margin: 0px;
+					font-size: 1.6rem;
 				}
 			}
 

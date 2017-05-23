@@ -9,66 +9,96 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h1>{{ question.question }}</h1>
-  <p>
-    This question was usefull?
-  </p>
-  <ion-row>
-    <ion-col col-6>
-      <button ion-button icon-left clear small (click)= "upVoteQuestion()">
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{question.positiveVotes}}</div>
-      </button>
-    </ion-col>
-    <ion-col col-6>
-      <button ion-button icon-left clear small (click)= "downVoteQuestion()">
-        <ion-icon name="thumbs-down"></ion-icon>
-        <div>{{question.negativeVotes}}</div>
-      </button>
-    </ion-col>
-  </ion-row>
+<ion-content>
+  <div class="question-details">
+    <ion-row class="details-content">
+      <ion-col no-padding col-12>
+        <h1 class="question-title">{{ question.question }}</h1>
+      </ion-col>
+      <ion-col no-padding col-12>
+        <p class="vote-call-to-action">
+          Was this question usefull? Rate it!
+        </p>
+        <ion-row class="question-actions-row">
+          <ion-col no-padding col-4>
+            <button class="question-action-button up-vote" ion-button icon-left round block small color="dark" (click)= "upVoteQuestion()">
+              <ion-icon name="arrow-up"></ion-icon>
+              <div>Up-vote</div>
+            </button>
+          </ion-col>
+          <ion-col no-padding col-3 class="score-col">
+            <div class="score-wrapper">
+              <span class="question-score" [ngClass]="{'good-score': (question.positiveVotes - question.negativeVotes) > 0, 'no-score': (question.positiveVotes - question.negativeVotes) == 0, 'bad-score': (question.positiveVotes - question.negativeVotes) < 0}">{{ question.positiveVotes - question.negativeVotes }}</span>
+              <button class="favourite-button" ion-button small round clear icon-only>
+                <ion-icon name="ios-star"></ion-icon>
+              </button>
+            </div>
+          </ion-col>
+          <ion-col no-padding col-4>
+            <button class="question-action-button down-vote" ion-button icon-left round block small color="dark" (click)= "downVoteQuestion()">
+              <ion-icon name="arrow-down"></ion-icon>
+              <div>Down-vote</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
 
   <div *ngIf="answers.length == 0">
-    <h3>There are no answers to this question. Be the first one to answer!</h3>
+    <h3 class="answers-call-out">
+      There are no answers to this question. Be the first one to answer!
+    </h3>
   </div>
 
   <div *ngIf="answers.length > 0">
-    <h3>We found {{answers.length}} Answers for this question!</h3>
-    <ion-card *ngFor="let answer of answers">
-      <ion-row>
-        <ion-col col-2>
-          <ion-row>
-            <ion-col col-12>
-              <button ion-button icon-left clear small (click)= "addPositiveVote(answer)">
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>{{answer.positiveVotes}}</div>
-              </button>
-            </ion-col>
-            <ion-col col-12>
-              <button ion-button icon-left clear small (click)= "addNegativeVote(answer)">
-                <ion-icon name="thumbs-down"></ion-icon>
-                <div>{{answer.negativeVotes}}</div>
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-        <ion-col col-10>
-          <p>{{ answer.answer }}</p>
-          <ion-row>
-            <ion-col col-12>
-              <button ion-button small color="danger" (click)="delete(answer.id)">Delete</button>
-              <button ion-button small color="dark" (click)="editAnswerModal(answer.id)">Edit</button>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-card>
+    <h3 class="answers-call-out">
+      <span>We found </span>
+      <ion-badge class="call-out-tag">{{ answers.length }}</ion-badge>
+      <span class="call-out-explanation"> Answers for this question!</span>
+    </h3>
+
+    <ion-list class="answers-list">
+      <ion-item class="answer-item" *ngFor="let answer of answers">
+        <ion-row>
+          <ion-col class="votes-col" col-2>
+            <button class="vote-button up-vote" ion-button clear small (click)= "addPositiveVote(answer)">
+              <ion-icon name="arrow-up"></ion-icon>
+            </button>
+            <span class="answer-score" [ngClass]="{'good-score': (answer.positiveVotes - answer.negativeVotes) > 0, 'no-score': (answer.positiveVotes - answer.negativeVotes) == 0, 'bad-score': (answer.positiveVotes - answer.negativeVotes) < 0}">{{ answer.positiveVotes - answer.negativeVotes }}</span>
+            <button class="vote-button down-vote" ion-button clear small (click)= "addNegativeVote(answer)">
+              <ion-icon name="arrow-down"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-10>
+            <ion-row class="answer-details">
+              <ion-col col-12>
+                <h2 class="answer-text">{{ answer.answer }}</h2>
+              </ion-col>
+              <ion-col col-4 class="votes-details">
+                <div class="details-wrapper">
+                  <span class="total-votes">{{ answer.positiveVotes + answer.negativeVotes }}</span>
+                  <span class="details-text">Votes</span>
+                </div>
+              </ion-col>
+              <ion-col col-4 class="actions-details">
+                <button class="edit-button" ion-button small round clear icon-only color="dark" (click)="editAnswerModal(answer.id)">
+                  <ion-icon name="md-create"></ion-icon>
+                </button>
+                <button class="delete-button" ion-button small round clear icon-only color="danger" (click)="delete(answer.id)">
+                  <ion-icon name="ios-trash-outline"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <button ion-button block (click)="createAnswerModal()">Have an Answer? Don't be shy!</button>
+    <button ion-button block (click)="createAnswerModal()">Know the Answer? Don't be shy!</button>
   </ion-toolbar>
 </ion-footer>
