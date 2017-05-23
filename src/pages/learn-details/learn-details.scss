@@ -46,13 +46,23 @@ learn-details-page {
 		}
 	}
 
+	.questions-list
+	{
+		margin: 0px;
+	}
+
 	.question-item
 	{
 		padding: 0px;
 
+		&:last-child
+		{
+			border-bottom: none !important;
+		}
+
 		.item-inner
 		{
-			padding: 0px;
+			padding: 0px !important;
 
 			ion-label {
 				margin: 0px;
@@ -95,7 +105,7 @@ learn-details-page {
 
 			.question-score
 			{
-				margin: 6px 0px;
+				margin: 0px;
 				text-align: center;
 				font-size: 2rem;
 				font-weight: 500;
@@ -120,13 +130,60 @@ learn-details-page {
 			}
 		}
 
-		.question-text
+		.question-details
 		{
-			color: $theme-color-3;
-			margin: 0px;
-			font-weight: 500;
-			font-size: 2.2rem;
-			line-height: 1.4;
+			height: 100%;
+			align-content: space-between;
+
+			.question-text
+			{
+				color: $theme-color-3;
+				margin: 0px;
+				font-weight: 500;
+				font-size: 2.2rem;
+				line-height: 1.4;
+			}
+
+			.actions-details
+			{
+				align-self: center;
+
+				.delete-button
+				{
+					margin: 0px;
+				}
+			}
+
+			.votes-details,
+			.answers-details
+			{
+				align-self: center;
+
+				.details-wrapper
+				{
+					font-size: 1.2rem;
+					background-color: $black-c;
+					color: $white-b;
+					text-align: center;
+					border-radius: 6px;
+					margin: 4px;
+					padding: 3px 0px 6px;
+				}
+
+				.details-text
+				{
+					display: block;
+				}
+
+				.total-votes,
+				.total-answers
+				{
+					display: block;
+					font-weight: 500;
+					font-size: 1.6rem;
+				}
+			}
 		}
+
 	}
 }

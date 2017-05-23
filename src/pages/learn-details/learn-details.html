@@ -34,7 +34,7 @@
       <span class="call-out-explanation"> from the community</span>
     </h3>
 
-    <ion-list>
+    <ion-list class="questions-list">
       <ion-item class="question-item" *ngFor="let question of questions">
         <ion-row>
           <ion-col class="votes-col" col-2>
@@ -47,18 +47,24 @@
             </button>
           </ion-col>
           <ion-col col-10>
-            <ion-row>
+            <ion-row class="question-details">
               <ion-col col-12>
                 <h2 class="question-text" (click)="openAnswers(question)">{{ question.question }}</h2>
               </ion-col>
-              <ion-col col-4>
-                <span>{{ question.positiveVotes + question.negativeVotes }} Votes</span>
+              <ion-col col-4 class="votes-details">
+                <div class="details-wrapper">
+                  <span class="total-votes">{{ question.positiveVotes + question.negativeVotes }}</span>
+                  <span class="details-text">Votes</span>
+                </div>
               </ion-col>
-              <ion-col col-4>
-                <span (click)="openAnswers(question)">{{ question.answers.length }} {{ (question.answers.length > 1 || question.answers.length == 0) ? 'Answers' : 'Answer' }}</span>
+              <ion-col col-4 class="answers-details" (click)="openAnswers(question)">
+                <div class="details-wrapper">
+                  <span class="total-answers">{{ question.answers.length }}</span>
+                  <span class="details-text">{{ (question.answers.length > 1 || question.answers.length == 0) ? 'Answers' : 'Answer' }}</span>
+                </div>
               </ion-col>
-              <ion-col col-4>
-                <button ion-button block small color="danger" (click)="delete(question.id)">Delete</button>
+              <ion-col col-4 class="actions-details">
+                <button class="delete-button" ion-button block small clear color="danger" (click)="delete(question.id)">Delete</button>
               </ion-col>
             </ion-row>
           </ion-col>
