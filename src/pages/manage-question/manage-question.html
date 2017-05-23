@@ -5,25 +5,27 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <span ion-text showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="questionForm" class="form" (ngSubmit)="onSubmit(questionForm.value)" >
-  <ion-row>
-    <ion-col offset-1 col-10>
-      <ion-item>
-        <ion-label floating>Write your question here</ion-label>
-        <ion-input type="text" formControlName="question" class="form-controll"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col  offset-3 col-6>
-      <button ion-button full type="submit" [disabled]="!questionForm.valid">ASK</button>
-    </ion-col>
-  </ion-row>
-</form>
+<ion-content class="modal-content">
+  <form [formGroup]="questionForm" class="modal-form" (ngSubmit)="onSubmit(questionForm.value)" >
+    <ion-row>
+      <ion-col offset-1 col-10>
+        <ion-item class="textarea-item">
+          <ion-label floating>Write your question here</ion-label>
+          <ion-textarea formControlName="question" rows="5"></ion-textarea>
+        </ion-item>
+      </ion-col>
+      <ion-col offset-1 col-10>
+        <button ion-button block type="submit" [disabled]="!questionForm.valid" color="ask">
+          <b>Ask</b>
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
