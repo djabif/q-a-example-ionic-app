@@ -100,7 +100,7 @@ question-details-page {
 
       				&.no-score
       				{
-      					color: $theme-color-3;
+      					color: $white-d;
       					opacity: 0.3;
       				}
 
@@ -241,9 +241,10 @@ question-details-page {
 			{
 				color: $theme-color-3;
 				margin: 0px;
-				font-weight: 500;
-				font-size: 2.2rem;
+				font-size: 1.4rem;
 				line-height: 1.4;
+        white-space: normal;
+
 			}
 
 			.actions-details

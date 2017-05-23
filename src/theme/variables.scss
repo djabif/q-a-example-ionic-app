@@ -38,6 +38,7 @@ $black-d: lighten($black, 60%);
 $theme-color-1: $black-a;
 $theme-color-2: #00e9d5;
 $theme-color-3: $black-b;
+$theme-color-4: #ae75e7;
 
 $colors: (
   primary:    #387ef5,
@@ -45,6 +46,8 @@ $colors: (
   danger:     #ed4f50,
   light:      #f4f4f4,
   dark:       $black-b,
+  ask:       $theme-color-4,
+  answer:       $theme-color-2,
   header:(
     base: $black-a,
     contrast: $white-b
