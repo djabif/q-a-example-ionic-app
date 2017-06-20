@@ -3,6 +3,7 @@ import { NavParams, ViewController } from 'ionic-angular';
 import { isPresent } from 'ionic-angular/util/util';
 import { Validators, FormGroup, FormControl} from '@angular/forms';
 import { AnswerService } from '../../services/answer.service';
+import { Answer } from '../../../sdk';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ManageAnswerPage {
   _question_id: string;
   _answer_id: string;
   answerForm: FormGroup;
-  answer: any;
+  answer: Answer = new Answer();
 
   constructor(
     public navParams: NavParams,
@@ -30,12 +31,11 @@ export class ManageAnswerPage {
 
   ionViewWillLoad() {
     let data = this.navParams.get('data');
-    if(data.answerId){
-      this.answerService.getAnswer(data.answerId)
-      .then(res => this.answer = res[0])
+    if(data.answer){
+      this.answer = data.answer;
     }
     this.answerForm = new FormGroup({
-      answer: new FormControl('', Validators.required)
+      answer: new FormControl(this.answer.answer, Validators.required)
     })
   }
 
@@ -47,7 +47,7 @@ export class ManageAnswerPage {
   onSubmit(value){
     let data = value;
     data.questionId = this._question_id;
-    if(this.answer){
+    if(this.answer.answer){
       data.id = this.answer.id;
       data.positiveVotes = this.answer.positiveVotes;
       data.negativeVotes = this.answer.negativeVotes;

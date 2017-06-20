@@ -40,15 +40,15 @@ export class QuestionDetailsPage {
     create_answer_modal.present();
   }
 
-  editAnswerModal(answerId) {
+  editAnswerModal(answer) {
     let edit_answer_data = {
       mode: 'Edit',
-      answerId: answerId,
+      answer: answer,
       questionId: this.questionId
     };
     let edit_answer_modal = this.modalCtrl.create(ManageAnswerPage, { data: edit_answer_data });
     edit_answer_modal.onDidDismiss(data => {
-      console.log(data);
+      this.getAnswers();
     });
     edit_answer_modal.present();
   }
