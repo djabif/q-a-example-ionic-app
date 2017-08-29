@@ -11,7 +11,7 @@ import { ManageAnswerPage } from '../pages/manage-answer/manage-answer';
 
 import { QuestionService } from '../services/question.service';
 import { AnswerService } from '../services/answer.service';
-// import { LearnService } from '../services/learn.service';
+import { LearnService } from '../services/learn.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,7 +22,6 @@ import { SDKBrowserModule } from '../../sdk/index';
 @NgModule({
   declarations: [
     MyApp,
-
     LearnFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage,
@@ -37,7 +36,6 @@ import { SDKBrowserModule } from '../../sdk/index';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
     LearnFeedPage,
     LearnDetailsPage,
     QuestionDetailsPage,
@@ -49,6 +47,7 @@ import { SDKBrowserModule } from '../../sdk/index';
     SplashScreen,
     QuestionService,
     AnswerService,
+    LearnService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
