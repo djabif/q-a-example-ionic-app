@@ -46,16 +46,16 @@
       ]
     },
     {
-      "slug": "IONIC-NATIVE",
-      "title": "Ionic Native",
-      "description": "Ask about Ionic Native",
+      "slug": "IONIC-CLI",
+      "title": "Ionic Cli",
+      "description": "Ask about Ionic Cli",
       "background": "#432B9C",
       "tags": [
         {
             "name": "Ionic2"
         },
         {
-            "name": "Plugins"
+            "name": "Cli"
         }
       ]
     }
